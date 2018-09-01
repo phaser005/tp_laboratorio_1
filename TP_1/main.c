@@ -5,7 +5,7 @@
 int main()
 {
     char seguir='s';
-    int option=0;
+    char option='x';
     float numero1=0, numero2=0;
     float R_SUMA, R_RESTA, R_MULTIPLICACION, R_DIVISION, FACTORIAL_A, FACTORIAL_B;
 
@@ -13,19 +13,19 @@ int main()
     {
         system("cls");
         menu_A(numero1, numero2);
-        scanf("%d",&option);
+        option = getch();
 
         switch(option)
         {
-            case 1:
-                printf("Ingrese el primer operando: ");
+            case '1':
+                printf("\nIngrese el primer operando: ");
                 scanf("%f", &numero1);
                 break;
-            case 2:
-                printf("Ingrese el segundo operando: ");
+            case '2':
+                printf("\nIngrese el segundo operando: ");
                 scanf("%f", &numero2);
                 break;
-            case 3:
+            case '3':
                 R_SUMA = suma(numero1, numero2);
                 R_RESTA = resta(numero1, numero2);
                 if(numero2!=0)
@@ -35,14 +35,15 @@ int main()
                 R_DIVISION = division(numero1, numero2);
                 FACTORIAL_A = factorial(numero1);
                 FACTORIAL_B = factorial(numero2);
+                printf("\nSe han realizado las operaciones.\n");
                 system("pause");
                 break;
-            case 4:
+            case '4':
                 system("cls");
                 menu_B(R_SUMA,R_RESTA, R_DIVISION, R_MULTIPLICACION, FACTORIAL_A, FACTORIAL_B, numero1, numero2);
                 system("pause");
                 break;
-            case 5:
+            case '5':
                 seguir = 'n';
                 break;
         }//SWITCH TERMINATE
