@@ -33,12 +33,12 @@ float resta (float A, float B){
 /** \brief Divide dos numeros enteros o flotantes.
 *
 *\param Dos numeros flotantes.
-*\return Entero 0.
+*\return resultado.
 *
 */
 float division (float A, float B){
     float resultado;
-    resultado = (float) A / B;
+    resultado = (float) ((A) / (B));
 
     return resultado;
 }
@@ -125,17 +125,32 @@ void menu_A(float A, float B)
 
 void menu_B(float suma, float resta, float division, float multiplicacion, float factorialA, float factorialB, float numero1, float numero2)
 {
-    printf("A = %2.f \t B = %2.f\n\n", numero1, numero2);
-    printf("El resultado de A+B es: %2.f \n\n", suma);
-    printf("El resultado de A-B es: %2.f \n\n", resta);
+    printf("A = %.2f \t B = %.2f\n\n", numero1, numero2);
+    printf("El resultado de A+B es: %.2f \n\n", suma);
+    printf("El resultado de A-B es: %.2f \n\n", resta);
     if(numero2==0)
     {
         printf("No es posible dividir por cero \n\n");
     }else
     {
-        printf("El resultado de A/B es: %2.f \n\n", division);
+        printf("El resultado de A/B es: %.2f \n\n", division);
     }
-    printf("El resultado de A*B es: %2.f \n\n", multiplicacion);
-    printf("El factorial de A es: %2.f y El factorial de B es: %2.f \n\n", factorialA, factorialB);
+    printf("El resultado de A*B es: %.2f \n\n", multiplicacion);
+
+    if ( (numero1 - (int)numero1 == 0) && numero1>=0 )
+    {
+        printf("El factorial de A es: %.10f ", factorialA);
+    }else
+    {
+        printf("A es negativo o fraccionario - ");
+    }
+
+    if ( (numero2 - (int)numero2 == 0) && numero2>=0 )
+    {
+        printf("y el factorial de A es: %.10f ", factorialB);
+    }else
+    {
+        printf("B es negativo o fraccionario\n");
+    }
 }
 
