@@ -47,6 +47,10 @@ int main()
             case '5':
                 seguir = 'n';
                 break;
+            default:
+                printf("Error. Ingrese 0 a 5\n");
+                system("pause");
+                break;
         }//SWITCH TERMINATE
 
     }//WHILE TERMINATE

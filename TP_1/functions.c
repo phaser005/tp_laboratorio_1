@@ -139,7 +139,7 @@ void menu_B(float suma, float resta, float division, float multiplicacion, float
 
     if ( (numero1 - (int)numero1 == 0) && numero1>=0 )
     {
-        printf("El factorial de A es: %.10f ", factorialA);
+        printf("El factorial de A es: %.2f ", factorialA);
     }else
     {
         printf("A es negativo o fraccionario - ");
@@ -147,7 +147,7 @@ void menu_B(float suma, float resta, float division, float multiplicacion, float
 
     if ( (numero2 - (int)numero2 == 0) && numero2>=0 )
     {
-        printf("y el factorial de A es: %.10f ", factorialB);
+        printf("y el factorial de A es: %.2f ", factorialB);
     }else
     {
         printf("B es negativo o fraccionario\n");
