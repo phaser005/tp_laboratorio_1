@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1537369498 source:e:\laboratorio i\tp's\tp 2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+	"utn.h"
+
+1537368900 e:\laboratorio i\tp's\tp 2\arrayemployees.h
+
+1537368386 source:e:\laboratorio i\tp's\tp 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1537358240 source:e:\laboratorio i\tp's\tp 2\getfunctions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
+1537368596 source:e:\laboratorio i\tp's\tp 2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"utn.h"
+
+1537367060 e:\laboratorio i\tp's\tp 2\utn.h
+
+1537388782 source:c:\users\user\documents\github\tp_laboratorio_1\tp 2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+
+1537388222 c:\users\user\documents\github\tp_laboratorio_1\tp 2\arrayemployees.h
+
+1537914963 source:c:\users\user\documents\github\tp_laboratorio_1\tp 2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"utn.h"
+
+1537367060 c:\users\user\documents\github\tp_laboratorio_1\tp 2\utn.h
+
+1537389163 source:c:\users\user\documents\github\tp_laboratorio_1\tp 2\arrayemployees.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"ArrayEmployees.h"
+	"utn.h"
+
