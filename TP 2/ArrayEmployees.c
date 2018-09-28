@@ -17,7 +17,7 @@
 *
 */
 
-void initEmployees(Employee employeeList[], int CANT)
+void initEmployees(Employee* employeeList, int CANT)
 {
     for(int i=0; i<CANT; i++)
     {
@@ -54,7 +54,7 @@ void menu(void)
 *
 */
 
-void modifyMenu(Employee employeeList[], int ID)
+void modifyMenu(Employee* employeeList, int ID)
 {
     printf("/////MODIFY MENU/////\n");
     printf("\nTHIS EMPLOYEE'S INFO WILL BE MODIFIED\n");
@@ -112,7 +112,7 @@ void listingMenuB(void)
 *
 */
 
-int findEmployeeById(Employee employeeList[], int CANT, int ID)
+int findEmployeeById(Employee* employeeList, int CANT, int ID)
 {
     int index = -1;
 
@@ -138,7 +138,7 @@ int findEmployeeById(Employee employeeList[], int CANT, int ID)
 *
 */
 
-void addEmployees(Employee employeeList[], int CANT)
+void addEmployees(Employee* employeeList, int CANT)
 {
     system("cls");
     int check;
@@ -192,7 +192,7 @@ void addEmployees(Employee employeeList[], int CANT)
 */
 
 
-void removeEmployee(Employee employeeList[], int CANT)
+void removeEmployee(Employee* employeeList, int CANT)
 {
     system("cls");
     int check = -1;
@@ -243,7 +243,7 @@ void removeEmployee(Employee employeeList[], int CANT)
 *
 */
 
-void modifyEmployee(Employee employeeList[], int CANT)
+void modifyEmployee(Employee* employeeList, int CANT)
 {
     system("cls");
     int check = -1;
@@ -319,7 +319,7 @@ void modifyEmployee(Employee employeeList[], int CANT)
 *
 */
 
-void listEmployee(Employee employeeList[], int CANT)
+void listEmployee(Employee* employeeList, int CANT)
 {
     int exit = 0;
     char option;
@@ -394,7 +394,7 @@ void listEmployee(Employee employeeList[], int CANT)
 *
 */
 
-void sortEmployeeByName(Employee employeeList[], int CANT, int order)
+void sortEmployeeByName(Employee* employeeList, int CANT, int order)
 {
     Employee aux;
     if(order==1)
@@ -455,7 +455,7 @@ void sortEmployeeByName(Employee employeeList[], int CANT, int order)
 *
 */
 
-void averageSalaryListing(Employee employeeList[], int CANT)
+void averageSalaryListing(Employee* employeeList, int CANT)
 {
     float total = 0;
     int count = 0;
@@ -497,7 +497,7 @@ void averageSalaryListing(Employee employeeList[], int CANT)
 *
 */
 
-void printEmployees(Employee employeeList[], int CANT)
+void printEmployees(Employee* employeeList, int CANT)
 {
     printf("\n--------------------------------------------------------------\n");
     printf("\n---------------------------REGISTRY---------------------------\n");

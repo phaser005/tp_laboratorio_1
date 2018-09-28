@@ -8,7 +8,9 @@
 
 int main()
 {
-    Employee employeeList[CANT];
+    Employee employees[CANT];
+    Employee *employeeList = employees;
+
     int flag = 0;
     int exit = 0;
     char option = 'x';
