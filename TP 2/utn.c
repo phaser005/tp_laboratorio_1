@@ -104,7 +104,7 @@ int getFloat(float* input, char condition[], char error[], int rangeMinimum, int
     for(int i=0; i<length-1; i++)
     {
         check = stringAux[i];
-        if(!( (check >= '0' && check <= '9') && pointCheck==1))
+        if(!( (check >= '0' && check <= '9') && pointCheck<=1))
         {
             printf(error);
             system("pause");

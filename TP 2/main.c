@@ -13,6 +13,7 @@ int main()
 
     int flag = 0;
     int exit = 0;
+    int status;
     char option = 'x';
 
     initEmployees(employeeList, CANT);
@@ -28,7 +29,7 @@ int main()
         switch(option)
         {
         case '1': //ADD//
-            addEmployees(employeeList, CANT);
+            infoInput(employeeList, CANT);
             flag = 1;
             break;
         case '2': //MODIFY//
@@ -46,7 +47,11 @@ int main()
                 printf("\n\nADD AN EMPLOYEE FIRST\n");
                 system("pause");
             }else{
-            removeEmployee(employeeList, CANT);
+                status = removeEmployee(employeeList, CANT);
+                if(status!=0)
+                {
+                    printf("ERROR REMOVING AN EMLOYEE");
+                }
             }
             break;
         case '4':

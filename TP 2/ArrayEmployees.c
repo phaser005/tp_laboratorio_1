@@ -128,6 +128,71 @@ int findEmployeeById(Employee* employeeList, int CANT, int ID)
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
+///////////////////////       infoInput      ///////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+/** \brief Ask the user to input info to add an employee, calling the addEmployees function and checking everything is ok afterwards.
+*
+*\param Employee employeeList[] received structure vector.
+*\param int CANT structure vector size.
+*
+*/
+
+void infoInput(Employee* employeeList, int CANT)
+{
+    Employee newEmployee;
+    system("cls");
+    int check;
+    do{
+        system("cls");
+        check = getString(newEmployee.lastName, "Type Last Name (Max Length 50): ", "[ERROR] Last Name too long or too short\n", 1, 51);
+        }while(check!=1);
+
+    do{
+        system("cls");
+        check = getString(newEmployee.name, "Type Name (Max Length 50): ", "[ERROR] Name too long or too short\n", 1, 51);
+        }while(check!=1);
+
+    do{
+        system("cls");
+        check = getFloat(&newEmployee.salary, "Type Salary: ", "[ERROR] Not a valid number\n", 1, 9999999);
+        }while(check!=1);
+
+    do{
+        system("cls");
+        check = getInt(&newEmployee.sector, "Type Sector (1 - 5): ", "[ERROR] Not a valid number\n", 1, 5);
+        }while(check!=1);
+
+    for (int i=0; i<CANT; i++)
+    {
+        if(employeeList[i].isEmpty==1)
+        {
+            newEmployee.id = i+1;
+            break;
+        }else{
+            newEmployee.id = -1;
+        }
+    }
+
+
+    check = addEmployees(employeeList, CANT, newEmployee.id, newEmployee.name, newEmployee.lastName, newEmployee.salary, newEmployee.sector);
+    if(check == 0)
+    {
+        printf("/////SAVED DATA/////\n");
+        printf("ID [%d]   LASTNAME [%s]   NAME [%s]   SALARY [%.2f]   SECTOR [%d]\n", newEmployee.id, newEmployee.lastName, newEmployee.name, newEmployee.salary, newEmployee.sector);
+
+        system("pause");
+    }else if(check == -1)
+    {
+        printf("ERROR");
+        system("pause");
+    }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
 ////////////////////       addEmployees      ///////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
@@ -135,49 +200,37 @@ int findEmployeeById(Employee* employeeList, int CANT, int ID)
 *
 *\param Employee employeeList[] received structure vector.
 *\param int CANT structure vector size.
+*\param int id provided employee id (calculated automatically from the initialized array "isEmpty" value)
+*\param char name[] provided name string
+*\param char lastName[] provided last name string
+*\param float salary provided salary
+*\param int sector provided sector
+*\return -1 if there's not enough space, 0 if everything is ok.
 *
 */
 
-void addEmployees(Employee* employeeList, int CANT)
+int addEmployees(Employee* employeeList, int CANT, int id, char name[], char lastName[], float salary, int sector)
 {
-    system("cls");
-    int check;
+    int status;
     for(int i=0; i<CANT; i++)
     {
         if(employeeList[i].isEmpty == 1)
         {
-            do{
-                system("cls");
-                check = getString(employeeList[i].lastName, "Type Last Name (Max Length 50): ", "[ERROR] Last Name too long or too short\n", 1, 51);
-            }while(check!=1);
 
-            do{
-                system("cls");
-                check = getString(employeeList[i].name, "Type Name (Max Length 50): ", "[ERROR] Name too long or too short\n", 1, 51);
-            }while(check!=1);
-
-            do{
-                system("cls");
-                check = getFloat(&employeeList[i].salary, "Type Salary: ", "[ERROR] Not a valid number\n", 1, 9999999);
-            }while(check!=1);
-
-            do{
-                system("cls");
-                check = getInt(&employeeList[i].sector, "Type Sector (1 - 5): ", "[ERROR] Not a valid number\n", 1, 5);
-            }while(check!=1);
-
+            employeeList[i].id = id;
+            strcpy(employeeList[i].name, name);
+            strcpy(employeeList[i].lastName, lastName);
+            employeeList[i].salary = salary;
+            employeeList[i].sector = sector;
             employeeList[i].isEmpty = 0;
 
-
-
-            printf("/////SAVED DATA/////\n");
-            printf("ID [%d]   LASTNAME [%s]   NAME [%s]   SALARY [%.2f]   SECTOR [%d]\n", employeeList[i].id, employeeList[i].lastName, employeeList[i].name, employeeList[i].salary, employeeList[i].sector);
-
-            system("pause");
+            status = 0;
             break;
+        }else{
+            status = -1;
         }
     }
-
+    return status;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -188,13 +241,15 @@ void addEmployees(Employee* employeeList, int CANT)
 *
 *\param Employee employeeList[] received structure vector.
 *\param int CANT structure vector size.
+*\return 0 if ok, -1 if there is an error.
 *
 */
 
 
-void removeEmployee(Employee* employeeList, int CANT)
+int removeEmployee(Employee* employeeList, int CANT)
 {
     system("cls");
+    int status;
     int check = -1;
     int ID, IDAux;
     char optionYN;
@@ -219,6 +274,7 @@ void removeEmployee(Employee* employeeList, int CANT)
             employeeList[ID].isEmpty = 1;
             printf("\nEMPLOYEE HAS BEEN SUSCESSFULLY DELETED!\n");
             system("pause");
+            status = 0;
         }else if(optionYN == 'N')
         {
             printf("\nOPERATION CANCELED\n");
@@ -228,8 +284,10 @@ void removeEmployee(Employee* employeeList, int CANT)
     else
     {
         printf("\nID NOT FOUND!\n");
+        status = -1;
         system("pause");
     }
+    return status;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -325,6 +383,7 @@ void listEmployee(Employee* employeeList, int CANT)
     char option;
     int exitB = 0;
     char optionB;
+    int status;
 
     do
     {
@@ -349,12 +408,20 @@ void listEmployee(Employee* employeeList, int CANT)
                         {
                             case '1': //ASCENDENT/////////////////////////
                                 sortEmployeeByName(employeeList, CANT, 1);
-                                printEmployees(employeeList, CANT);
+                                status = printEmployees(employeeList, CANT);
+                                if(status!=0)
+                                {
+                                    printf("ERROR PRINTING EMPLOYEES");
+                                }
                                 system("pause");
                                 break;
                             case '2': //DESCENDENT///////////////////////
                                 sortEmployeeByName(employeeList, CANT, 2);
-                                printEmployees(employeeList, CANT);
+                                status = printEmployees(employeeList, CANT);
+                                if(status!=0)
+                                {
+                                    printf("ERROR PRINTING EMPLOYEES");
+                                }
                                 system("pause");
                                 break;
                             case '3':
@@ -391,13 +458,15 @@ void listEmployee(Employee* employeeList, int CANT)
 *\param Employee employeeList[] received structure vector.
 *\param int CANT structure vector size.
 *\param int order 1 ascending, 2 descending
+*\return 0 if ok, -1 if there is an error
 *
 */
 
-void sortEmployeeByName(Employee* employeeList, int CANT, int order)
+int sortEmployeeByName(Employee* employeeList, int CANT, int order)
 {
+    int status;
     Employee aux;
-    if(order==1)
+    if(order==2)
     {
         for(int i=0; i<CANT-1; i++)
         {
@@ -408,6 +477,7 @@ void sortEmployeeByName(Employee* employeeList, int CANT, int order)
                     aux = employeeList[j];
                     employeeList[j] = employeeList[i];
                     employeeList[i] = aux;
+                    status = 0;
                 }else if((strcmp(employeeList[i].lastName, employeeList[j].lastName)==0) && employeeList[i].isEmpty==0 && employeeList[j].isEmpty==0)
                 {
                     if(employeeList[i].sector > employeeList[j].sector)
@@ -415,11 +485,12 @@ void sortEmployeeByName(Employee* employeeList, int CANT, int order)
                         aux = employeeList[j];
                         employeeList[j] = employeeList[i];
                         employeeList[i] = aux;
+                        status = 0;
                     }
-                }
+                }else{status = 1;}
             }
         }
-    }else if(order==2)
+    }else if(order==1)
     {
         for(int i=0; i<CANT-1; i++)
         {
@@ -430,6 +501,7 @@ void sortEmployeeByName(Employee* employeeList, int CANT, int order)
                     aux = employeeList[j];
                     employeeList[j] = employeeList[i];
                     employeeList[i] = aux;
+                    status = 0;
                 }else if((strcmp(employeeList[i].lastName, employeeList[j].lastName)==0) && employeeList[i].isEmpty==0 && employeeList[j].isEmpty==0)
                 {
                     if(employeeList[i].sector < employeeList[j].sector)
@@ -437,11 +509,13 @@ void sortEmployeeByName(Employee* employeeList, int CANT, int order)
                         aux = employeeList[j];
                         employeeList[j] = employeeList[i];
                         employeeList[i] = aux;
+                        status = 0;
                     }
-                }
+                }{status = 1;}
             }
         }
     }
+    return status;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -497,14 +571,20 @@ void averageSalaryListing(Employee* employeeList, int CANT)
 *
 */
 
-void printEmployees(Employee* employeeList, int CANT)
+int printEmployees(Employee* employeeList, int CANT)
 {
+    int status;
     printf("\n--------------------------------------------------------------\n");
     printf("\n---------------------------REGISTRY---------------------------\n");
     for(int i=0; i<CANT; i++)
     {
         if(employeeList[i].isEmpty==0)
-        printf("ID[%d]   LASTNAME[%s]    NAME[%s]    SALARY[%.2f]    SECTOR[%d]\n", employeeList[i].id, employeeList[i].lastName, employeeList[i].name, employeeList[i].salary, employeeList[i].sector);
+        {
+            printf("ID[%d]   LASTNAME[%s]    NAME[%s]    SALARY[%.2f]    SECTOR[%d]\n", employeeList[i].id, employeeList[i].lastName, employeeList[i].name, employeeList[i].salary, employeeList[i].sector);
+            status = 0;
+        }
     }
+
+    return status;
 }
 

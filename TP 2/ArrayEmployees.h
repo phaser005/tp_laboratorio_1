@@ -17,11 +17,12 @@ void initEmployees(Employee* , int);
 
 int findEmployeeById(Employee* , int, int);
 
-void addEmployees(Employee* , int);
+void infoInput(Employee*, int);
+int addEmployees(Employee*, int, int, char [], char [], float, int);
 void modifyEmployee(Employee* , int);
-void removeEmployee(Employee* , int);
+int removeEmployee(Employee* , int);
 void listEmployee(Employee* , int);
 
-void sortEmployeeByName(Employee* , int, int);
+int sortEmployeeByName(Employee* , int, int);
 void averageSalaryListing(Employee* , int);
-void printEmployees(Employee* , int);
+int printEmployees(Employee* , int);
