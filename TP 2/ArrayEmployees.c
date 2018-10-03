@@ -6,16 +6,6 @@
 #include "ArrayEmployees.h"
 #include "utn.h"
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       initEmployees      //////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Initializes received structure vector, assigning a value to ID and isEmpty variables.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size
-*
-*/
 
 void initEmployees(Employee* employeeList, int CANT)
 {
@@ -26,13 +16,6 @@ void initEmployees(Employee* employeeList, int CANT)
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-/////////////////////       menu    ////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Shows the main menu for the ABM program.
-*
-*/
 
 void menu(void)
 {
@@ -43,16 +26,6 @@ void menu(void)
     printf("[5] EXIT\n");
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-//////////////////        modifyMenu         ///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Shows the modify menu of the ABM program and displays the info of the employee that matchs the provided ID.
-*
-*\param Employee employeeList[] received structure vector
-*\param int ID integer number representing the ID of a registered employee
-*
-*/
 
 void modifyMenu(Employee* employeeList, int ID)
 {
@@ -67,13 +40,6 @@ void modifyMenu(Employee* employeeList, int ID)
     printf("[5] EXIT\n");
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-/////////////////////       listingMenu     ////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Shows the listing menu of the ABM program.
-*
-*/
 
 void listingMenu(void)
 {
@@ -83,13 +49,6 @@ void listingMenu(void)
     printf("[3] EXIT\n");
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-/////////////////////       listingMenuB    ////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Shows the listing sub menu of the ABM program.
-*
-*/
 
 void listingMenuB(void)
 {
@@ -99,18 +58,6 @@ void listingMenuB(void)
     printf("[3] EXIT\n");
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////      findEmployeeById      ////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Scans the provided structure vector for a matching ID number, provided by the user.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*\param int ID provided ID number.
-*\return index -1 if ID provided didn't match, i if ID matches with a registered employee
-*
-*/
 
 int findEmployeeById(Employee* employeeList, int CANT, int ID)
 {
@@ -127,16 +74,6 @@ int findEmployeeById(Employee* employeeList, int CANT, int ID)
     return index;
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-///////////////////////       infoInput      ///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Ask the user to input info to add an employee, calling the addEmployees function and checking everything is ok afterwards.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*
-*/
 
 void infoInput(Employee* employeeList, int CANT)
 {
@@ -190,25 +127,6 @@ void infoInput(Employee* employeeList, int CANT)
 }
 
 
-
-
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       addEmployees      ///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Adds an employee, with the user inputs as it's data, changing it's "isEmpty" state to 0.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*\param int id provided employee id (calculated automatically from the initialized array "isEmpty" value)
-*\param char name[] provided name string
-*\param char lastName[] provided last name string
-*\param float salary provided salary
-*\param int sector provided sector
-*\return -1 if there's not enough space, 0 if everything is ok.
-*
-*/
-
 int addEmployees(Employee* employeeList, int CANT, int id, char name[], char lastName[], float salary, int sector)
 {
     int status;
@@ -232,18 +150,6 @@ int addEmployees(Employee* employeeList, int CANT, int id, char name[], char las
     }
     return status;
 }
-
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       removeEmployee      /////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Removes an employee whose ID is provided by the user, changing it's "isEmpty" state to 1.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*\return 0 if ok, -1 if there is an error.
-*
-*/
 
 
 int removeEmployee(Employee* employeeList, int CANT)
@@ -290,16 +196,6 @@ int removeEmployee(Employee* employeeList, int CANT)
     return status;
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       modifyEmployee    ///////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Modifies the data of an employee whose ID is provided by the user.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*
-*/
 
 void modifyEmployee(Employee* employeeList, int CANT)
 {
@@ -366,16 +262,6 @@ void modifyEmployee(Employee* employeeList, int CANT)
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       listEmployee     ////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Lists employees based on the option the user choice.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*
-*/
 
 void listEmployee(Employee* employeeList, int CANT)
 {
@@ -449,24 +335,12 @@ void listEmployee(Employee* employeeList, int CANT)
         }while(exit==0);
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       sortEmployeeByName    ///////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Lists employees alphabetically and by sector, in a ascending or descending way, defined by the provided "order" variable.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*\param int order 1 ascending, 2 descending
-*\return 0 if ok, -1 if there is an error
-*
-*/
 
 int sortEmployeeByName(Employee* employeeList, int CANT, int order)
 {
     int status;
     Employee aux;
-    if(order==2)
+    if(order==1)
     {
         for(int i=0; i<CANT-1; i++)
         {
@@ -490,7 +364,7 @@ int sortEmployeeByName(Employee* employeeList, int CANT, int order)
                 }else{status = 1;}
             }
         }
-    }else if(order==1)
+    }else if(order==2)
     {
         for(int i=0; i<CANT-1; i++)
         {
@@ -518,16 +392,6 @@ int sortEmployeeByName(Employee* employeeList, int CANT, int order)
     return status;
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       averageSalaryListing    /////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Lists the total salaries, average salaries and employees whose salary is above the average salary.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*
-*/
 
 void averageSalaryListing(Employee* employeeList, int CANT)
 {
@@ -560,16 +424,6 @@ void averageSalaryListing(Employee* employeeList, int CANT)
     printf("\nABOVE AVERAGE SALARY EMPLOYEES: %d\n", aboveAverage);
 }
 
-////////////////////////////////////////////////////////////////////////////////////
-////////////////////       printEmployees     //////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////
-
-/** \brief Prints registered employees and its info.
-*
-*\param Employee employeeList[] received structure vector.
-*\param int CANT structure vector size.
-*
-*/
 
 int printEmployees(Employee* employeeList, int CANT)
 {
