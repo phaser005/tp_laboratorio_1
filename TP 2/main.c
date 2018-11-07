@@ -35,7 +35,7 @@ int main()
         case '2': //MODIFY//
             if(flag==0)
             {
-                printf("\n\nADD AN EMPLOYEE FIRST\n");
+                printf("\n\nADD AN EMPLOYEE FIRST.\n");
                 system("pause");
             }else{
             modifyEmployee(employeeList, CANT);
