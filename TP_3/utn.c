@@ -199,5 +199,6 @@ int getString(char input[], char condition[], char error[], int rangeMinimum, in
         strcpy(input, stringAux);
         status = 1;
     }
+    fflush(stdin);
     return status;
 }

@@ -80,10 +80,10 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     char workTime[8];
     char salary[8];
 
-    getString(id, "TYPE ID: ","LENGTH ERROR" ,1,8);
+    getString(id, "TYPE ID: ","LENGTH ERROR" ,1,40);
     getString(name, "TYPE NAME: ","LENGTH ERROR" ,1,128);
-    getString(workTime, "TYPE WORKTIME: ","LENGTH ERROR" ,1,8);
-    getString(salary, "TYPE SALARY: ","LENGTH ERROR" ,1,8);
+    getString(workTime, "TYPE WORKTIME: ","LENGTH ERROR" ,1,40);
+    getString(salary, "TYPE SALARY: ","LENGTH ERROR" ,1,40);
 
     newEmployee = employee_newParametros(id, name, workTime, salary);
     if(newEmployee!=NULL)
@@ -93,7 +93,6 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
     {
         returnValue = -1;
     }
-    //ll_add(pArrayListEmployee, newEmployee);
 
     return returnValue;
 }
@@ -198,6 +197,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
         {
             ll_remove(pArrayListEmployee, i);
             printf("\nThe employee has been removed!");
+            free(indexPointer);
         }else if(option=='N')
         {
             printf("\nOperation Canceled");

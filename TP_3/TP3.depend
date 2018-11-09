@@ -358,3 +358,71 @@
 	<conio.h>
 	"utn.h"
 
+1541789207 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+
+1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\linkedlist.h
+
+1541604376 c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.h
+
+1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.h
+
+1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.h
+
+1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\utn.h
+
+1541789080 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+
+1541616764 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+
+1541616764 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	<conio.h>
+	"LinkedList.h"
+	"Employee.h"
+	"Controller.h"
+	"Parser.h"
+	"utn.h"
+
+1541789207 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<ctype.h>
+	"utn.h"
+

@@ -20,7 +20,7 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 {
     Employee* new_employee = NULL;
     int id, horasTrabajadas;
-    int check;
+    int check_1, check_2, check_3, check_4;
     float salario;
     new_employee = employee_new();
     if(new_employee!=NULL)
@@ -29,33 +29,54 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
         horasTrabajadas = atoi(horasTrabajadasStr);
         salario = atof(salaryStr);
 
-        check = employee_setId(new_employee, id);
-        if(check!=0)
-            new_employee=NULL;
+        check_1 = employee_setId(new_employee, id);
+        if(check_1 != 0)
+            {
+                printf("Error. 1\n");
+                system("pause");
+            }
 
-        check = employee_setNombre(new_employee, nombreStr);
-        if(check!=0)
-            new_employee=NULL;
+        check_2 = employee_setNombre(new_employee, nombreStr);
+        if(check_2 != 0)
+            {
+                printf("Error. 2\n");
+                system("pause");
+            }
 
-        check = employee_setHorasTrabajadas(new_employee, horasTrabajadas);
-        if(check!=0)
-            new_employee=NULL;
+        check_3 = employee_setHorasTrabajadas(new_employee, horasTrabajadas);
+        if(check_3 != 0)
+            {
+                printf("Error. 3\n");
+                system("pause");
+            }
 
-        check = employee_setSueldo(new_employee, salario);
-        if(check!=0)
-            new_employee=NULL;
+        check_4 = employee_setSueldo(new_employee, salario);
+        if(check_4 != 0)
+            {
+                printf("Error. 4\n");
+                system("pause");
+            }
+
+       /* if(check_1 !=0 || check_2 !=0 || check_3 !=0 || check_4 != 0)
+        {
+            new_employee = NULL;
+            printf("Error. Incorrect input type parameters, please type again\n");
+            system("pause");
+        }else
+        {
+            printf("An employee has been added!\n");
+        }*/
+
     }
 
     return new_employee;
 }
 
-void employee_delete(){}
-
 int employee_setId(Employee* this,int id)
 {
     int returnValue = 0;
 
-    if(id>0)
+    if(id>0 && this!=NULL)
     {
         this->id = id;
     }else{
@@ -150,7 +171,7 @@ int employee_getSueldo(Employee* this,float* sueldo)
 
     if(this!=NULL && sueldo!=NULL)
     {
-        *sueldo = this->horasTrabajadas;
+        *sueldo = this->sueldo;
     }else{
         returnValue = -1;
     }
