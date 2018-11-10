@@ -364,7 +364,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
         returnValue = -1;
     }else if(pArrayListEmployee!=NULL)//WRITING PART
     {
-        newFilePointer = fopen(path, "wb+");
+        newFilePointer = fopen(path, "wb");
         if(newFilePointer == NULL)
         {
             printf("\nCouldn't create archive\n");
