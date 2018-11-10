@@ -116,6 +116,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
             if(!feof(pFile))
             {
                 printf("Couln't read all the parameters!\n");
+                status = -1;
                 system("pause");
                 break;
             }else

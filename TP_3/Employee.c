@@ -178,6 +178,9 @@ int employee_SortByName(void* employeeA, void* employeeB)
         employeeAuxA = employeeA;
         employeeAuxB = employeeB;
         returnValue = strcmp( employeeAuxA->nombre, employeeAuxB->nombre);
+    }else
+    {
+        returnValue = -1;
     }
     return returnValue;
 }
@@ -196,6 +199,9 @@ int employee_SortBySalary(void* employeeA, void* employeeB)
         {
             returnValue = 1;
         }
+    }else
+    {
+        returnValue = -1;
     }
     return returnValue;
 }
@@ -214,6 +220,9 @@ int employee_SortByWorkedTime(void* employeeA, void* employeeB)
         {
             returnValue = 1;
         }
+    }else
+    {
+        returnValue = -1;
     }
     return returnValue;
 }
@@ -232,6 +241,9 @@ int employee_SortByID(void* employeeA, void* employeeB)
         {
             returnValue = 1;
         }
+    }else
+    {
+        returnValue = -1;
     }
     return returnValue;
 }

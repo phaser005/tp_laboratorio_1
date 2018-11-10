@@ -224,20 +224,28 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     char nombreAux[128];
     int horasTrabajadasAux;
     float sueldoAux;
+    int status = 0;
 
-    for(int i=0; i<ll_len(pArrayListEmployee); i++)
+    if(pArrayListEmployee != NULL)
     {
-        indexPointer = (Employee*)ll_get(pArrayListEmployee, i);
-        employee_getNombre(indexPointer, nombreAux);
-        employee_getId(indexPointer, &idAux);
-        employee_getHorasTrabajadas(indexPointer, &horasTrabajadasAux);
-        employee_getSueldo(indexPointer, &sueldoAux);
+        for(int i=0; i<ll_len(pArrayListEmployee); i++)
+        {
+            indexPointer = (Employee*)ll_get(pArrayListEmployee, i);
+            employee_getNombre(indexPointer, nombreAux);
+            employee_getId(indexPointer, &idAux);
+            employee_getHorasTrabajadas(indexPointer, &horasTrabajadasAux);
+            employee_getSueldo(indexPointer, &sueldoAux);
 
-        printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f", idAux, nombreAux, horasTrabajadasAux, sueldoAux);
-    }
+            printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f", idAux, nombreAux, horasTrabajadasAux, sueldoAux);
+        }
     printf("\n");
     system("pause");
-    return 1;
+    }else if(pArrayListEmployee==NULL)
+    {
+        status = -1;
+    }
+
+    return status;
 }
 
 /** \brief Ordenar empleados
@@ -249,38 +257,44 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
+    int status = 0;
     int option = 0;
-    do{
-        option = sort_menu();
-        switch(option)
-        {
-            case 1://SORT BY NAME
-                printf("SORTED BY NAME\n");
-                ll_sort(pArrayListEmployee, employee_SortByName, 1);
-                system("pause");
-                break;
-            case 2://SORT BY SALARY
-                printf("SORTED BY SALARY\n");
-                ll_sort(pArrayListEmployee, employee_SortBySalary, 1);
-                system("pause");
-                break;
-            case 3://SORT BY WORKED TIME
-                printf("SORTED BY WORKED TIME\n");
-                ll_sort(pArrayListEmployee, employee_SortByWorkedTime, 1);
-                system("pause");
-                break;
-            case 4://SORT BY ID
-                printf("SORTED BY ID\n");
-                ll_sort(pArrayListEmployee, employee_SortByID, 1);
-                system("pause");
-                break;
-            case 5:
-                option = 0;
-                break;
-        }
-    }while( option != 0);
-
-    return 1;
+    if(pArrayListEmployee != NULL)
+    {
+        do{
+            option = sort_menu();
+            switch(option)
+            {
+                case 1://SORT BY NAME
+                    printf("SORTED BY NAME\n");
+                    ll_sort(pArrayListEmployee, employee_SortByName, 1);
+                    system("pause");
+                    break;
+                case 2://SORT BY SALARY
+                    printf("SORTED BY SALARY\n");
+                    ll_sort(pArrayListEmployee, employee_SortBySalary, 1);
+                    system("pause");
+                    break;
+                case 3://SORT BY WORKED TIME
+                    printf("SORTED BY WORKED TIME\n");
+                    ll_sort(pArrayListEmployee, employee_SortByWorkedTime, 1);
+                    system("pause");
+                    break;
+                case 4://SORT BY ID
+                    printf("SORTED BY ID\n");
+                    ll_sort(pArrayListEmployee, employee_SortByID, 1);
+                    system("pause");
+                    break;
+                case 5:
+                    option = 0;
+                    break;
+            }
+        }while( option != 0);
+    }else
+    {
+        status = -1;
+    }
+    return status;
 }
 
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo texto).

@@ -358,7 +358,7 @@
 	<conio.h>
 	"utn.h"
 
-1541809358 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.c
+1541815823 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -372,15 +372,15 @@
 
 1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\linkedlist.h
 
-1541604376 c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.h
+1541816540 c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.h
 
-1541805947 c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.h
+1541816071 c:\users\user\documents\github\tp_laboratorio_1\tp_3\controller.h
 
-1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.h
+1541816540 c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.h
 
 1541616764 c:\users\user\documents\github\tp_laboratorio_1\tp_3\utn.h
 
-1541806228 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.c
+1541816361 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
@@ -404,7 +404,7 @@
 	"Parser.h"
 	"utn.h"
 
-1541808819 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.c
+1541816540 source:c:\users\user\documents\github\tp_laboratorio_1\tp_3\parser.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
