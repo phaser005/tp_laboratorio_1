@@ -27,41 +27,44 @@
 
 int main()
 {
-    char option = '0';
+    int option = -1;
     LinkedList* EmployeeList = ll_newLinkedList();
     do{
-        menu();
+        option = menu();
         switch(option)
         {
-            case '1':
+            case 1:
                 controller_loadFromText("data.csv",EmployeeList);
                 break;
-            case '2':
-                controller_loadFromBinary("data.bin", EmployeeList);
+            case 2:
+                controller_loadFromBinary("data.bin",EmployeeList);
                 break;
-            case '3':
+            case 3:
                 controller_addEmployee(EmployeeList);
                 break;
-            case '4':
+            case 4:
                 controller_editEmployee(EmployeeList);
                 break;
-            case '5':
+            case 5:
                 controller_removeEmployee(EmployeeList);
                 break;
-            case '6':
+            case 6:
                 controller_ListEmployee(EmployeeList);
                 break;
-            case '7':
+            case 7:
                 controller_sortEmployee(EmployeeList);
                 break;
-            case '8':
-                controller_saveAsText("data2.csv", EmployeeList);
+            case 8:
+                controller_saveAsText("data.csv", EmployeeList);
                 break;
-            case '9':
+            case 9:
                 controller_saveAsBinary("data.bin", EmployeeList);
                 break;
+            case 10:
+                option = 0;
+                break;
         }
-    }while( (option = getch() )!= ESC);
+    }while( option != 0);
 
     ll_deleteLinkedList(EmployeeList);
     return 0;

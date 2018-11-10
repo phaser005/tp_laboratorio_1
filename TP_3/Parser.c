@@ -28,7 +28,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     check = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",idStr,nameStr,timeStr,salaryStr);
     if(check==4)
     {
-        printf("\nTitles Readed!\n");
+        //printf("\nTitles Readed!\n");
 
         while(!feof(pFile))
         {
@@ -39,13 +39,17 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 
                 ll_add(pArrayListEmployee, newEmployeeAux);
                 addedCant++;
+                if(feof(pFile))
+                {
+                    printf("\nThe file has been fully readed\n");
+                }
             }else if (readQuant != 4)
             {
                 if(!feof(pFile))
                 {
                     printf("Couln't read all the parameters!\n");
-                    break;
                     system("pause");
+                    break;
                 }else
                 {
                     printf("The file has been readed fully\n");
@@ -55,8 +59,8 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
             }
 
         }
-        controller_ListEmployee(pArrayListEmployee);
         printf("\n%d Employees has been added\n", addedCant);
+        controller_ListEmployee(pArrayListEmployee);
     }else{
         printf("Couln't read the file correctly");
         returnValue = -1;
@@ -96,16 +100,16 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
                                         //NAME
             strncpy(nameStr, newEmployeeParam.nombre, sizeof(nameStr));
 
-            printf("LOADED:\n");
-            printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f\n", newEmployeeParam.id, newEmployeeParam.nombre, newEmployeeParam.horasTrabajadas, newEmployeeParam.sueldo);
+            //printf("LOADED:\n");
+            //printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f\n", newEmployeeParam.id, newEmployeeParam.nombre, newEmployeeParam.horasTrabajadas, newEmployeeParam.sueldo);
 
             newEmployeeAux = employee_newParametros(idStr, nameStr, timeStr, salaryStr);
 
             ll_add(pArrayListEmployee, newEmployeeAux);
 
-            printf("ADDED:\n");
-            printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f\n", newEmployeeAux->id, newEmployeeAux->nombre, newEmployeeAux->horasTrabajadas, newEmployeeAux->sueldo);
-            system("pause");
+            //printf("ADDED:\n");
+            //printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f\n", newEmployeeAux->id, newEmployeeAux->nombre, newEmployeeAux->horasTrabajadas, newEmployeeAux->sueldo);
+            //system("pause");
             addedCant++;
         }else if (readQuant != 1)
         {

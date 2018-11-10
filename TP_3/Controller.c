@@ -108,7 +108,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 {
     int IDAUX;
     int check = -1;
-    char option = '0';
+    int option = -1;
     int flag = 0;
     int status = 1;
     Employee* indexPointer;
@@ -128,29 +128,32 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
             system("cls");
             printf("**      This employee will be modified \n");
             printf("\nId: %d    Name: %s    Worked Time: %d    Salary: %.1f\n", indexPointer->id, indexPointer->nombre, indexPointer->horasTrabajadas, indexPointer->sueldo);
-            modify_menu();
+            option = modify_menu();
             switch(option)
             {
-                case '1':   //MODIFY NAME
+                case 1:   //MODIFY NAME
                     do{
                     system("cls");
                     check = getString((indexPointer->nombre), "Type new name: (Max 128): ", "[ERROR] Out of range\n", 1, 128);
                     }while(check!=1);
                     break;
-                case '2':   //MODIFY WORKED TIME
+                case 2:   //MODIFY WORKED TIME
                     do{
                     system("cls");
                     check = getInt(&(indexPointer->horasTrabajadas), "Type new worked time: (Max 9999999): ", "[ERROR] Out of range\n", 1, 9999999);
                     }while(check!=1);
                     break;
-                case '3':   //MODIFY SALARY
+                case 3:   //MODIFY SALARY
                     do{
                     system("cls");
                     check = getFloat(&(indexPointer->sueldo), "Type new salary: (Max 9999999): ", "[ERROR] Out of range\n", 1, 9999999);
                     }while(check!=1);
                     break;
+                case 4:
+                    option = 0;
+                    break;
             }
-        }while( (option = getch() )!= ESC);
+        }while( option != 0);
     }else
     {
         printf("ID nonexistant\n");
@@ -232,6 +235,8 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 
         printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f", idAux, nombreAux, horasTrabajadasAux, sueldoAux);
     }
+    printf("\n");
+    system("pause");
     return 1;
 }
 
@@ -244,29 +249,36 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
-    char option = '0';
+    int option = 0;
     do{
-        sort_menu();
+        option = sort_menu();
         switch(option)
         {
-            case '1'://SORT BY NAME
-                printf("SORTED BY NAME");
+            case 1://SORT BY NAME
+                printf("SORTED BY NAME\n");
                 ll_sort(pArrayListEmployee, employee_SortByName, 1);
+                system("pause");
                 break;
-            case '2'://SORT BY SALARY
-                printf("SORTED BY SALARY");
+            case 2://SORT BY SALARY
+                printf("SORTED BY SALARY\n");
                 ll_sort(pArrayListEmployee, employee_SortBySalary, 1);
+                system("pause");
                 break;
-            case '3'://SORT BY WORKED TIME
-                printf("SORTED BY WORKED TIME");
+            case 3://SORT BY WORKED TIME
+                printf("SORTED BY WORKED TIME\n");
                 ll_sort(pArrayListEmployee, employee_SortByWorkedTime, 1);
+                system("pause");
                 break;
-            case '4'://SORT BY ID
-                printf("SORTED BY ID");
+            case 4://SORT BY ID
+                printf("SORTED BY ID\n");
                 ll_sort(pArrayListEmployee, employee_SortByID, 1);
+                system("pause");
+                break;
+            case 5:
+                option = 0;
                 break;
         }
-    }while( (option = getch() )!= ESC);
+    }while( option != 0);
 
     return 1;
 }
@@ -365,7 +377,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
             {
 
                 employeePointer = (Employee*)ll_get(pArrayListEmployee, i);
-                written_lengh = fwrite(employeePointer,sizeof(*employeePointer),1,newFilePointer);
+                written_lengh = fwrite(employeePointer,sizeof(Employee),1,newFilePointer);
                 printf("SAVED DATA:\n");
                 printf("\n//id: %d //nombre: %s //horasTrabajadas: %d //sueldo: %.2f", employeePointer->id, employeePointer->nombre, employeePointer->horasTrabajadas, employeePointer->sueldo);
                 if(written_lengh!=1)
@@ -382,8 +394,9 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 }
 
 
-void menu(void)
+int menu(void)
 {
+    int option = -1;
     system("cls");
     printf("****************************************MENU******************************************\n");
     printf("**    [1]   **  Cargar los datos de los empleados desde el archivo data.csv (TEXT).\n");
@@ -396,13 +409,17 @@ void menu(void)
     printf("**    [8]   **  Guardar los datos de los empleados en el archivo data.csv (TEXT).\n");
     printf("**    [9]   **  Guardar los datos de los empleados en el archivo data.bin (BINARY).\n");
     printf("***************************************************************************************\n");
-    printf("**    ESC   **  Salir\n");
+    printf("**    [10]  **  Salir\n");
     printf("***************************************************************************************\n");
     printf("** TYPE YOUR OPTION **\n");
+    scanf("%d",&option);
+    fflush(stdin);
+    return option;
 }
 
-void modify_menu(void)
+int modify_menu(void)
 {
+    int option;
     printf("\n");
     printf("***************************  What do you want to do?  *********************************\n");
     printf("**\n");
@@ -411,18 +428,25 @@ void modify_menu(void)
     printf("**    [3]   **          Modify Salary\n");
     printf("**\n");
     printf("***************************************************************************************\n");
-    printf("**    ESC   **          Salir\n");
+    printf("**    [4]   **          Salir\n");
     printf("***************************************************************************************\n");
     printf("** TYPE YOUR OPTION **\n");
+    scanf("%d",&option);
+    fflush(stdin);
+    return option;
 }
 
-void sort_menu(void)
+int sort_menu(void)
 {
+    int option;
     system("cls");
     printf("Select your order method\n");
     printf("[1]     By Name (Ascendent)\n");
     printf("[2]     By Salary (Ascendent)\n");
     printf("[3]     By Worked Time (Ascendent)\n");
     printf("[4]     By ID (Ascendent)\n");
-    printf("[ESC]   Exit\n");
+    printf("[5]   Exit\n");
+    scanf("%d",&option);
+    fflush(stdin);
+    return option;
 }

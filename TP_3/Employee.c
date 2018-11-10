@@ -32,41 +32,30 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
         check_1 = employee_setId(new_employee, id);
         if(check_1 != 0)
             {
-                printf("Error. 1\n");
+                printf("Error. ID\n");
                 system("pause");
             }
 
         check_2 = employee_setNombre(new_employee, nombreStr);
         if(check_2 != 0)
             {
-                printf("Error. 2\n");
+                printf("Error. Name\n");
                 system("pause");
             }
 
         check_3 = employee_setHorasTrabajadas(new_employee, horasTrabajadas);
         if(check_3 != 0)
             {
-                printf("Error. 3\n");
+                printf("Error. Worked Time\n");
                 system("pause");
             }
 
         check_4 = employee_setSueldo(new_employee, salario);
         if(check_4 != 0)
             {
-                printf("Error. 4\n");
+                printf("Error. Salary\n");
                 system("pause");
             }
-
-       /* if(check_1 !=0 || check_2 !=0 || check_3 !=0 || check_4 != 0)
-        {
-            new_employee = NULL;
-            printf("Error. Incorrect input type parameters, please type again\n");
-            system("pause");
-        }else
-        {
-            printf("An employee has been added!\n");
-        }*/
-
     }
 
     return new_employee;
